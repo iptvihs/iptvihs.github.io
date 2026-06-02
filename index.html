@@ -3,41 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>İHS PLAYER — Premium IPTV</title>
-<meta name="description" content="İHS PLAYER - Android için premium IPTV Player.">
+<title>İHS PLAYER — Premium IPTV Deneyimi</title>
+<meta name="description" content="İHS PLAYER - Android için premium IPTV Player. Canlı TV, Film, Dizi, EPG ve daha fazlası.">
+<meta property="og:title" content="İHS PLAYER — Premium IPTV">
+<meta property="og:description" content="Canlı TV, Film ve Dizi deneyimini yeniden tanımlayan premium IPTV oynatıcı.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iptvihs.github.io">
+<meta property="og:image" content="https://iptvihs.github.io/og-image.png">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="İHS PLAYER — Premium IPTV">
+<meta name="twitter:description" content="Canlı TV, Film ve Dizi deneyimini yeniden tanımlayan premium IPTV oynatıcı.">
+<meta name="theme-color" content="#8B5CF6">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%238B5CF6'/><text x='50' y='68' font-size='48' font-family='monospace' font-weight='bold' text-anchor='middle' fill='white'>iHS</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#030305;--card:#0e0e16;--border:rgba(139,92,246,.08);--purple:#8B5CF6;--purple-l:#a78bfa;--purple-d:#6d28d9;--white:#f8f8ff;--g1:rgba(255,255,255,.85);--g2:rgba(255,255,255,.6);--g3:rgba(255,255,255,.35);--g4:rgba(255,255,255,.15);--green:#22c55e}
+:root{--bg:#030305;--card:#0e0e16;--border:rgba(139,92,246,.08);--bh:rgba(139,92,246,.25);--p:#8B5CF6;--pl:#a78bfa;--pd:#6d28d9;--w:#f8f8ff;--g1:rgba(255,255,255,.85);--g2:rgba(255,255,255,.6);--g3:rgba(255,255,255,.35);--g4:rgba(255,255,255,.15);--green:#22c55e}
 html{scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--w);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
 ::selection{background:rgba(139,92,246,.3)}
 
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:rgba(3,3,5,.7);border-bottom:1px solid rgba(255,255,255,.04)}
-.nav-logo{font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,var(--white),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
+.nav-logo{font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,var(--w),var(--p));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px;text-decoration:none}
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{color:var(--g2);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s}
-.nav-links a:hover{color:var(--white)}
-.nav-cta{background:var(--purple)!important;color:white!important;padding:.5rem 1.2rem;border-radius:8px;font-weight:600!important}
-.nav-cta:hover{box-shadow:0 4px 20px rgba(139,92,246,.3);transform:translateY(-1px)}
+.nav-links a:hover{color:var(--w)}
+.nav-cta{background:var(--p)!important;color:white!important;padding:.5rem 1.2rem;border-radius:8px;font-weight:600!important}
 
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:8rem 2rem 4rem;overflow:hidden}
 .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
-.orb-1{width:500px;height:500px;background:var(--purple);opacity:.08;top:-10%;right:-5%;animation:fl 8s ease-in-out infinite}
+.orb-1{width:500px;height:500px;background:var(--p);opacity:.08;top:-10%;right:-5%;animation:fl 8s ease-in-out infinite}
 .orb-2{width:400px;height:400px;background:#3b82f6;opacity:.05;bottom:10%;left:-10%;animation:fl 10s ease-in-out infinite reverse}
 @keyframes fl{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.05)}66%{transform:translate(-20px,20px) scale(.95)}}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(139,92,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(circle,black 30%,transparent 70%);-webkit-mask-image:radial-gradient(circle,black 30%,transparent 70%)}
 
 .hero-content{text-align:center;position:relative;z-index:2;max-width:800px}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);font-size:.75rem;font-weight:600;color:var(--purple-l);letter-spacing:1px;text-transform:uppercase;margin-bottom:2rem;animation:fd .8s ease both}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);font-size:.75rem;font-weight:600;color:var(--pl);letter-spacing:1px;text-transform:uppercase;margin-bottom:2rem;animation:fd .8s ease both}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:bk 2s infinite}
 @keyframes bk{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes fd{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 
+.app-icon{width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,var(--p),var(--pd));display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;box-shadow:0 8px 32px rgba(139,92,246,.3);animation:fd .8s ease both .1s}
+.app-icon span{font-family:'Space Mono',monospace;font-size:1.6rem;font-weight:700;color:white}
+
 .hero-logo{font-family:'Space Mono',monospace;font-size:clamp(5rem,15vw,10rem);font-weight:700;letter-spacing:-6px;line-height:.85;position:relative;animation:lr 1s ease both .2s}
-.hero-logo .i{color:var(--white)}
-.hero-logo .h{background:linear-gradient(135deg,var(--purple),var(--purple-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-logo .s{color:var(--g2)}
+.hero-logo .i{color:var(--w)}.hero-logo .h{background:linear-gradient(135deg,var(--p),var(--pl));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-logo .s{color:var(--g2)}
 .hero-logo::after{content:'PLAYER';position:absolute;bottom:-1.5rem;left:50%;transform:translateX(-50%);font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:300;letter-spacing:14px;color:var(--g3);text-indent:14px}
 @keyframes lr{from{opacity:0;transform:scale(.85);filter:blur(10px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
 
@@ -47,19 +58,29 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--white);ove
 .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;animation:fu .8s ease both .8s}
 .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.8rem;border-radius:12px;font-size:.9rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .35s;font-family:'Outfit',sans-serif}
 .btn svg{width:18px;height:18px;flex-shrink:0}
-.btn-primary{background:linear-gradient(135deg,var(--purple),var(--purple-d));color:white;box-shadow:0 4px 24px rgba(139,92,246,.3),inset 0 1px 0 rgba(255,255,255,.1)}
+.btn-primary{background:linear-gradient(135deg,var(--p),var(--pd));color:white;box-shadow:0 4px 24px rgba(139,92,246,.3),inset 0 1px 0 rgba(255,255,255,.1)}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(139,92,246,.4)}
 .btn-ghost{background:rgba(255,255,255,.04);color:var(--g1);border:1px solid rgba(255,255,255,.08)}
 .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-3px)}
 
+.play-badge{margin-top:1.5rem;animation:fu .8s ease both 1s}
+.play-badge img{height:50px;transition:transform .3s}
+.play-badge img:hover{transform:scale(1.05)}
+
 .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--g4);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;animation:fu 1s ease both 1.2s}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--purple),transparent);animation:sa 2s ease-in-out infinite}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--p),transparent);animation:sa 2s ease-in-out infinite}
 @keyframes sa{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 .section{padding:6rem 2rem;max-width:1100px;margin:0 auto}
-.section-label{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--purple);text-align:center;margin-bottom:.8rem}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--p);text-align:center;margin-bottom:.8rem}
 .section-title{text-align:center;font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1.5px;margin-bottom:1rem;line-height:1.1}
 .section-desc{text-align:center;color:var(--g3);font-size:1rem;max-width:500px;margin:0 auto 3.5rem}
+
+.stats-bar{display:flex;justify-content:center;gap:1px;background:rgba(255,255,255,.04);border-radius:16px;overflow:hidden;border:1px solid var(--border);max-width:900px;margin:4rem auto}
+.stat{flex:1;text-align:center;padding:2rem 1rem;background:var(--card);transition:all .3s}
+.stat:hover{background:rgba(139,92,246,.04)}
+.stat-value{font-family:'Space Mono',monospace;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;color:var(--pl);letter-spacing:-1px}
+.stat-label{font-size:.75rem;color:var(--g3);margin-top:.4rem;letter-spacing:1px;text-transform:uppercase;font-weight:500}
 
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);border-radius:20px;overflow:hidden;border:1px solid var(--border)}
 .feature{background:var(--card);padding:2.5rem 2rem;transition:all .4s}
@@ -69,15 +90,40 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--white);ove
 .feature h3{font-size:1.15rem;font-weight:700;margin-bottom:.6rem}
 .feature p{font-size:.88rem;color:var(--g3);line-height:1.6}
 
-.stats-bar{display:flex;justify-content:center;gap:1px;background:rgba(255,255,255,.04);border-radius:16px;overflow:hidden;border:1px solid var(--border);max-width:900px;margin:4rem auto}
-.stat{flex:1;text-align:center;padding:2rem 1rem;background:var(--card);transition:all .3s}
-.stat:hover{background:rgba(139,92,246,.04)}
-.stat-value{font-family:'Space Mono',monospace;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;color:var(--purple-l);letter-spacing:-1px}
-.stat-label{font-size:.75rem;color:var(--g3);margin-top:.4rem;letter-spacing:1px;text-transform:uppercase;font-weight:500}
+/* Screenshots */
+.screenshots{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.phone-frame{width:180px;height:360px;border-radius:24px;background:var(--card);border:2px solid rgba(255,255,255,.08);overflow:hidden;position:relative;transition:all .4s;flex-shrink:0}
+.phone-frame:hover{transform:translateY(-8px);border-color:var(--bh);box-shadow:0 16px 48px rgba(139,92,246,.15)}
+.phone-notch{width:60px;height:6px;background:rgba(255,255,255,.1);border-radius:3px;margin:8px auto 0;position:relative;z-index:2}
+.phone-screen{padding:1rem .8rem;height:100%;display:flex;flex-direction:column;gap:.5rem}
+.phone-screen .ps-title{font-size:.65rem;font-weight:700;color:var(--pl);text-transform:uppercase;letter-spacing:1px}
+.phone-screen .ps-item{height:8px;border-radius:4px;background:rgba(139,92,246,.12)}
+.phone-screen .ps-card{height:50px;border-radius:8px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.08)}
+.phone-screen .ps-row{display:flex;gap:4px}
+.phone-screen .ps-row div{flex:1;height:65px;border-radius:6px;background:rgba(139,92,246,.08)}
+.phone-label{text-align:center;margin-top:.6rem;font-size:.75rem;color:var(--g3);font-weight:500}
+
+/* FAQ */
+.faq-list{max-width:700px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:.8rem;overflow:hidden;background:var(--card);transition:all .3s}
+.faq-item:hover{border-color:var(--bh)}
+.faq-q{padding:1.2rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:.95rem;user-select:none}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--p);font-weight:300;transition:transform .3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 1.5rem;max-height:0;overflow:hidden;transition:all .3s;color:var(--g3);font-size:.9rem;line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding:0 1.5rem 1.2rem}
 
 .tech-list{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap}
 .tech-chip{padding:.55rem 1.2rem;border-radius:10px;font-size:.8rem;font-weight:600;background:var(--card);border:1px solid var(--border);color:var(--g2);transition:all .3s}
-.tech-chip:hover{border-color:rgba(139,92,246,.25);color:var(--white);transform:translateY(-2px)}
+.tech-chip:hover{border-color:var(--bh);color:var(--w);transform:translateY(-2px)}
+
+/* How to use */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.step{text-align:center;padding:2rem 1.5rem;border-radius:16px;background:var(--card);border:1px solid var(--border);transition:all .3s}
+.step:hover{border-color:var(--bh);transform:translateY(-4px)}
+.step-num{font-family:'Space Mono',monospace;font-size:2rem;font-weight:700;color:var(--p);margin-bottom:.8rem}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.step p{font-size:.85rem;color:var(--g3);line-height:1.5}
 
 .cta-section{text-align:center;padding:6rem 2rem;position:relative}
 .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse,rgba(139,92,246,.08),transparent 60%);pointer-events:none}
@@ -91,27 +137,30 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--white);ove
 .footer-brand{font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--g2)}
 .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
 .footer-links a{color:var(--g3);text-decoration:none;font-size:.85rem;transition:color .3s}
-.footer-links a:hover{color:var(--purple-l)}
+.footer-links a:hover{color:var(--pl)}
 .footer-copy{width:100%;text-align:center;margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);font-size:.75rem;color:var(--g4)}
 
-@media(max-width:768px){.nav-links a:not(.nav-cta){display:none}.features{grid-template-columns:1fr}.stats-bar{flex-direction:column}.hero-logo{letter-spacing:-3px}.footer-inner{justify-content:center;text-align:center}}
+@media(max-width:768px){.nav-links a:not(.nav-cta){display:none}.features,.steps{grid-template-columns:1fr}.stats-bar{flex-direction:column}.hero-logo{letter-spacing:-3px}.footer-inner{justify-content:center;text-align:center}.phone-frame{width:150px;height:300px}.screenshots{gap:.8rem}}
 
 body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");pointer-events:none;z-index:10000}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-logo">iHS</div><div class="nav-links"><a href="#features">Özellikler</a><a href="#tech">Teknoloji</a><a href="#download">İndir</a><a href="https://t.me/ihsplayertr">Destek</a><a href="https://play.google.com/store/apps/details?id=com.ihsplayer" class="nav-cta">İndir →</a></div></nav>
+
+<nav class="nav"><a href="/" class="nav-logo">iHS</a><div class="nav-links"><a href="#features">Özellikler</a><a href="#screenshots">Ekranlar</a><a href="#howto">Nasıl Kullanılır</a><a href="#faq">SSS</a><a href="https://play.google.com/store/apps/details?id=com.ihsplayer" class="nav-cta">İndir →</a></div></nav>
 
 <section class="hero">
 <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="grid-bg"></div>
 <div class="hero-content">
 <div class="hero-badge">Yeni Sürüm v1.0.6</div>
+<div class="app-icon"><span>iHS</span></div>
 <div class="hero-logo"><span class="i">i</span><span class="h">H</span><span class="s">S</span></div>
 <p class="hero-desc">Canlı TV, Film ve Dizi deneyimini yeniden tanımlayan premium IPTV oynatıcı. Tek uygulama, sınırsız içerik.</p>
 <div class="hero-actions">
 <a href="https://play.google.com/store/apps/details?id=com.ihsplayer" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12l-7-7v4H3v6h11v4l7-7z"/></svg>Google Play'den İndir</a>
 <a href="https://t.me/ihsplayertr" class="btn btn-ghost"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.07-.2c-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.55 3.67-.52.36-1 .54-1.42.53-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.37-.49 1.02-.74 3.98-1.73 6.64-2.87 7.97-3.43 3.8-1.58 4.59-1.86 5.1-1.87.11 0 .37.03.54.17.14.12.18.28.2.46 0 .06.01.24 0 .38z"/></svg>Telegram</a>
 </div>
+<div class="play-badge"><a href="https://play.google.com/store/apps/details?id=com.ihsplayer"><img alt="Google Play'den İndir" src="https://play.google.com/intl/en_us/badges/static/images/badges/tr_badge_web_generic.png" height="50"></a></div>
 </div>
 <div class="scroll-hint"><div class="scroll-line"></div>keşfet</div>
 </section>
@@ -138,12 +187,62 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 </div>
 </section>
 
+<section class="section" id="screenshots">
+<div class="section-label">Uygulama</div>
+<h2 class="section-title">Bir göz atın.</h2>
+<p class="section-desc">Modern ve kullanıcı dostu arayüz.</p>
+<div class="screenshots">
+<div>
+<div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen"><div class="ps-title">Canlı TV</div><div class="ps-card"></div><div class="ps-row"><div></div><div></div><div></div></div><div class="ps-row"><div></div><div></div><div></div></div><div class="ps-card"></div></div></div>
+<div class="phone-label">Canlı TV</div>
+</div>
+<div>
+<div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen"><div class="ps-title">Film & Dizi</div><div class="ps-item" style="width:60%"></div><div class="ps-row"><div style="height:80px"></div><div style="height:80px"></div></div><div class="ps-row"><div style="height:80px"></div><div style="height:80px"></div></div></div></div>
+<div class="phone-label">Film & Dizi</div>
+</div>
+<div>
+<div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen"><div class="ps-title">Video Player</div><div class="ps-card" style="height:90px;background:rgba(139,92,246,.12)"></div><div class="ps-item" style="width:80%"></div><div class="ps-item" style="width:50%"></div><div class="ps-card"></div><div class="ps-card"></div></div></div>
+<div class="phone-label">Oynatıcı</div>
+</div>
+<div>
+<div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen"><div class="ps-title">EPG Rehberi</div><div class="ps-card"></div><div class="ps-card"></div><div class="ps-card"></div><div class="ps-card"></div><div class="ps-card"></div></div></div>
+<div class="phone-label">EPG</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="howto">
+<div class="section-label">Başlangıç</div>
+<h2 class="section-title">3 adımda başlayın.</h2>
+<p class="section-desc">Kurulum çok kolay.</p>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><h3>İndirin</h3><p>Google Play'den İHS Player'ı ücretsiz indirin ve kurun.</p></div>
+<div class="step"><div class="step-num">2</div><h3>Bağlanın</h3><p>Xtream Codes, M3U URL veya dosya ile IPTV bilgilerinizi girin.</p></div>
+<div class="step"><div class="step-num">3</div><h3>İzleyin</h3><p>Canlı TV, film ve dizileri hemen izlemeye başlayın.</p></div>
+</div>
+</section>
+
 <section class="section" id="tech">
 <div class="section-label">Teknoloji</div>
 <h2 class="section-title">Her formatla uyumlu.</h2>
-<p class="section-desc">Hangi IPTV sağlayıcısını kullanırsanız kullanın, iHS Player destekler.</p>
+<p class="section-desc">Hangi IPTV sağlayıcısını kullanırsanız kullanın.</p>
 <div class="tech-list">
 <span class="tech-chip">Xtream Codes</span><span class="tech-chip">M3U / M3U8</span><span class="tech-chip">HLS</span><span class="tech-chip">MPEG-DASH</span><span class="tech-chip">ExoPlayer</span><span class="tech-chip">VLC Engine</span><span class="tech-chip">Dosya İçe Aktar</span><span class="tech-chip">Multi-Playlist</span>
+</div>
+</section>
+
+<section class="section" id="faq">
+<div class="section-label">SSS</div>
+<h2 class="section-title">Sıkça Sorulan Sorular</h2>
+<p class="section-desc">Merak ettikleriniz.</p>
+<div class="faq-list">
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">İHS Player ücretsiz mi?</div><div class="faq-a">Evet, İHS Player tamamen ücretsiz olarak Google Play'den indirilebilir. Uygulama içi reklam destekli bir modeldir.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">IPTV aboneliği sağlıyor musunuz?</div><div class="faq-a">Hayır, İHS Player yalnızca bir medya oynatıcıdır. Kendi IPTV hizmet sağlayıcınızdan aldığınız bilgileri girerek kullanabilirsiniz. Herhangi bir içerik sağlamamaktayız.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Hangi giriş yöntemlerini destekliyorsunuz?</div><div class="faq-a">Xtream Codes (sunucu URL + kullanıcı adı + şifre), M3U/M3U8 URL ve cihazdan dosya içe aktarma yöntemlerini destekliyoruz.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Verilerim güvende mi?</div><div class="faq-a">Evet, tüm kullanıcı verileri AES-256-GCM askeri düzey şifreleme ile korunmaktadır. Bilgileriniz yalnızca cihazınızda saklanır ve üçüncü taraflarla paylaşılmaz.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">24 saat replay nasıl çalışır?</div><div class="faq-a">EPG (program rehberi) üzerinden geçmiş programlara tıklayarak son 24 saat içindeki yayınları tekrar izleyebilirsiniz. Bu özellik IPTV sağlayıcınızın desteğine bağlıdır.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Hangi cihazlarda çalışır?</div><div class="faq-a">Android 8.0 (API 26) ve üzeri tüm Android cihazlarda çalışır: telefon, tablet ve Android TV box.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sorun yaşıyorum, nasıl destek alabilirim?</div><div class="faq-a">Telegram topluluğumuza (@ihsplayertr) katılabilir veya iptvihs@gmail.com adresine e-posta gönderebilirsiniz.</div></div>
 </div>
 </section>
 
@@ -159,9 +258,10 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 <footer class="footer">
 <div class="footer-inner">
 <div class="footer-brand">iHS Player</div>
-<div class="footer-links"><a href="https://t.me/ihsplayertr">Telegram</a><a href="mailto:iptvihs@gmail.com">İletişim</a><a href="privacy.html">Gizlilik</a></div>
+<div class="footer-links"><a href="https://t.me/ihsplayertr">Telegram</a><a href="mailto:iptvihs@gmail.com">İletişim</a><a href="privacy.html">Gizlilik Politikası</a><a href="terms.html">Kullanım Koşulları</a></div>
 </div>
 <p class="footer-copy">© 2025 İHS PLAYER · iptvihs@gmail.com · Tüm hakları saklıdır.</p>
 </footer>
+
 </body>
 </html>
