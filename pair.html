@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İHS Player - TV'ye Bağlan</title>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;font-family:-apple-system,system-ui,sans-serif;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{width:100%;max-width:420px;background:linear-gradient(160deg,#16161f,#0d0d14);border-radius:20px;padding:28px 24px;border:1px solid rgba(255,255,255,0.06)}
+.logo{font-size:26px;font-weight:900;text-align:center;margin-bottom:4px}
+.logo .r{color:#E8192C}
+.sub{font-size:12px;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:6px}
+.code-badge{text-align:center;font-size:13px;color:#E8192C;font-weight:700;letter-spacing:2px;margin-bottom:22px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tab{flex:1;text-align:center;padding:11px;border-radius:10px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.5);font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.tab.active{background:#E8192C;color:#fff}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:6px}
+.field input{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px;font-size:15px;color:#fff;outline:none}
+.field input:focus{border-color:#E8192C}
+.btn{width:100%;background:#E8192C;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;margin-top:6px}
+.btn:disabled{opacity:.5}
+.hidden{display:none}
+.status{text-align:center;padding:20px;font-size:14px}
+.status.ok{color:#22C55E}
+.status.err{color:#ff5555}
+.spinner{width:40px;height:40px;border:3px solid rgba(255,255,255,0.1);border-top-color:#E8192C;border-radius:50%;margin:0 auto 14px;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.note{font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:16px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">iHS <span class="r">Player</span></div>
+  <div class="sub">TV'nize liste ekleyin</div>
+  <div class="code-badge" id="codeBadge">Kod: —</div>
+
+  <div id="form">
+    <div class="tabs">
+      <div class="tab active" id="tabM3u" onclick="switchTab('m3u')">M3U</div>
+      <div class="tab" id="tabXtream" onclick="switchTab('xtream')">Xtream</div>
+    </div>
+
+    <!-- M3U -->
+    <div id="m3uFields">
+      <div class="field">
+        <label>M3U URL</label>
+        <input type="url" id="m3uUrl" placeholder="http://ornek.com/playlist.m3u" autocomplete="off">
+      </div>
+      <div class="field">
+        <label>Liste Adı (opsiyonel)</label>
+        <input type="text" id="m3uName" placeholder="Evim" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Xtream -->
+    <div id="xtreamFields" class="hidden">
+      <div class="field">
+        <label>Sunucu URL</label>
+        <input type="url" id="xtServer" placeholder="http://sunucu.com:8080" autocomplete="off">
+      </div>
+      <div class="field">
+        <label>Kullanıcı Adı</label>
+        <input type="text" id="xtUser" placeholder="kullanici" autocomplete="off">
+      </div>
+      <div class="field">
+        <label>Şifre</label>
+        <input type="text" id="xtPass" placeholder="şifre" autocomplete="off">
+      </div>
+    </div>
+
+    <button class="btn" id="sendBtn" onclick="submitData()">TV'ye Gönder →</button>
+  </div>
+
+  <div id="result" class="hidden"></div>
+
+  <div class="note">Bilgileriniz yalnızca TV'nize güvenli şekilde iletilir ve hemen silinir.</div>
+</div>
+
+<script>
+// ⚠️ BURAYA KENDİ FIREBASE CONFIG'İNİ YAPIŞTIR (google-services.json'daki bilgiler)
+const firebaseConfig = {
+  apiKey: "AIzaSyARiszynU-DRTF6f2x8zq3p26dQKT0ew-o",
+  authDomain: "ihsplayer.firebaseapp.com",
+  projectId: "ihsplayer",
+  storageBucket: "ihsplayer.firebasestorage.app",
+  messagingSenderId: "845520617681",
+  appId: "1:845520617681:android:20be8412907b43f6d805f0"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// URL'den kodu al
+const params = new URLSearchParams(window.location.search);
+const code = params.get('code') || '';
+document.getElementById('codeBadge').textContent = code ? 'Kod: ' + code : 'Kod bulunamadı';
+
+let currentTab = 'm3u';
+function switchTab(t) {
+  currentTab = t;
+  document.getElementById('tabM3u').classList.toggle('active', t === 'm3u');
+  document.getElementById('tabXtream').classList.toggle('active', t === 'xtream');
+  document.getElementById('m3uFields').classList.toggle('hidden', t !== 'm3u');
+  document.getElementById('xtreamFields').classList.toggle('hidden', t !== 'xtream');
+}
+
+function showResult(html, cls) {
+  document.getElementById('form').classList.add('hidden');
+  const r = document.getElementById('result');
+  r.classList.remove('hidden');
+  r.className = 'status ' + cls;
+  r.innerHTML = html;
+}
+
+async function submitData() {
+  if (!code) { alert('Geçersiz kod. QR kodu tekrar okutun.'); return; }
+  const btn = document.getElementById('sendBtn');
+  btn.disabled = true;
+  btn.textContent = 'Gönderiliyor...';
+
+  let data;
+  if (currentTab === 'm3u') {
+    const url = document.getElementById('m3uUrl').value.trim();
+    if (!url) { alert('M3U URL girin'); btn.disabled = false; btn.textContent = 'TV\'ye Gönder →'; return; }
+    data = {
+      status: 'submitted', type: 'm3u',
+      url: url,
+      name: document.getElementById('m3uName').value.trim() || 'Yeni Liste',
+      username: '', password: '',
+      submittedAt: Date.now()
+    };
+  } else {
+    const server = document.getElementById('xtServer').value.trim();
+    const user = document.getElementById('xtUser').value.trim();
+    const pass = document.getElementById('xtPass').value.trim();
+    if (!server || !user || !pass) { alert('Tüm alanları doldurun'); btn.disabled = false; btn.textContent = 'TV\'ye Gönder →'; return; }
+    data = {
+      status: 'submitted', type: 'xtream',
+      url: server, username: user, password: pass,
+      name: 'Xtream Hesabı',
+      submittedAt: Date.now()
+    };
+  }
+
+  try {
+    await db.collection('pairing').doc(code).set(data, { merge: true });
+    showResult('<div style="font-size:48px;margin-bottom:10px">✅</div>Gönderildi!<br><span style="font-size:12px;color:rgba(255,255,255,0.5)">TV\'nizde liste ekleniyor...</span>', 'ok');
+  } catch (e) {
+    showResult('❌ Hata oluştu.<br><span style="font-size:12px">' + e.message + '</span>', 'err');
+    btn.disabled = false;
+    btn.textContent = 'TV\'ye Gönder →';
+    document.getElementById('form').classList.remove('hidden');
+    document.getElementById('result').classList.add('hidden');
+  }
+}
+</script>
+</body>
+</html>
