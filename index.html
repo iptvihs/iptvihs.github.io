@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>İHS PLAYER — Premium IPTV Deneyimi</title>
-<meta name="description" content="İHS PLAYER - Android için premium IPTV Player. Canlı TV, Film, Dizi, EPG ve daha fazlası.">
+<meta name="description" content="İHS PLAYER - Android ve Android TV için premium IPTV Player. Canlı TV, Film, Dizi, EPG, 4K ve daha fazlası.">
 <meta property="og:title" content="İHS PLAYER — Premium IPTV">
-<meta property="og:description" content="Canlı TV, Film ve Dizi deneyimini yeniden tanımlayan premium IPTV oynatıcı.">
+<meta property="og:description" content="Canlı TV, Film ve Dizi deneyimini yeniden tanımlayan premium IPTV oynatıcı. Telefon, tablet ve Android TV.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://iptvihs.github.io">
 <meta property="og:image" content="https://iptvihs.github.io/og-image.png">
@@ -67,6 +67,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--w);overflo
 .play-badge img{height:50px;transition:transform .3s}
 .play-badge img:hover{transform:scale(1.05)}
 
+.hero-platforms{display:flex;gap:1.2rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;animation:fu .8s ease both 1.1s}
+.hero-platform{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--g3);font-weight:500}
+.hero-platform svg{width:16px;height:16px;opacity:.6}
+
 .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--g4);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;animation:fu 1s ease both 1.2s}
 .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--p),transparent);animation:sa 2s ease-in-out infinite}
 @keyframes sa{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -90,7 +94,14 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--w);overflo
 .feature h3{font-size:1.15rem;font-weight:700;margin-bottom:.6rem}
 .feature p{font-size:.88rem;color:var(--g3);line-height:1.6}
 
-/* Screenshots */
+.tv-banner{max-width:1100px;margin:2rem auto;padding:0 2rem}
+.tv-banner-inner{background:linear-gradient(135deg,rgba(232,25,44,.08),rgba(59,130,246,.04));border:1px solid var(--border);border-radius:24px;padding:3rem 2.5rem;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.tv-icon{font-size:3.5rem;flex-shrink:0}
+.tv-banner-text{flex:1;min-width:280px}
+.tv-banner-text h3{font-size:1.6rem;font-weight:800;margin-bottom:.6rem;letter-spacing:-.5px}
+.tv-banner-text p{color:var(--g2);font-size:.95rem;max-width:500px}
+.tv-tag{display:inline-block;margin-top:1rem;padding:.4rem 1rem;background:rgba(232,25,44,.12);border:1px solid rgba(232,25,44,.2);border-radius:100px;font-size:.75rem;color:var(--pl);font-weight:600;letter-spacing:1px}
+
 .screenshots{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
 .phone-frame{width:180px;height:360px;border-radius:24px;background:var(--card);border:2px solid rgba(255,255,255,.08);overflow:hidden;position:relative;transition:all .4s;flex-shrink:0}
 .phone-frame:hover{transform:translateY(-8px);border-color:var(--bh);box-shadow:0 16px 48px rgba(232,25,44,.15)}
@@ -103,7 +114,6 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--w);overflo
 .phone-screen .ps-row div{flex:1;height:65px;border-radius:6px;background:rgba(232,25,44,.08)}
 .phone-label{text-align:center;margin-top:.6rem;font-size:.75rem;color:var(--g3);font-weight:500}
 
-/* FAQ */
 .faq-list{max-width:700px;margin:0 auto}
 .faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:.8rem;overflow:hidden;background:var(--card);transition:all .3s}
 .faq-item:hover{border-color:var(--bh)}
@@ -117,7 +127,6 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--w);overflo
 .tech-chip{padding:.55rem 1.2rem;border-radius:10px;font-size:.8rem;font-weight:600;background:var(--card);border:1px solid var(--border);color:var(--g2);transition:all .3s}
 .tech-chip:hover{border-color:var(--bh);color:var(--w);transform:translateY(-2px)}
 
-/* How to use */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
 .step{text-align:center;padding:2rem 1.5rem;border-radius:16px;background:var(--card);border:1px solid var(--border);transition:all .3s}
 .step:hover{border-color:var(--bh);transform:translateY(-4px)}
@@ -140,7 +149,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--w);overflo
 .footer-links a:hover{color:var(--pl)}
 .footer-copy{width:100%;text-align:center;margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);font-size:.75rem;color:var(--g4)}
 
-@media(max-width:768px){.nav-links a:not(.nav-cta){display:none}.features,.steps{grid-template-columns:1fr}.stats-bar{flex-direction:column}.hero-logo{letter-spacing:-3px}.footer-inner{justify-content:center;text-align:center}.phone-frame{width:150px;height:300px}.screenshots{gap:.8rem}}
+@media(max-width:768px){.nav-links a:not(.nav-cta){display:none}.features,.steps{grid-template-columns:1fr}.stats-bar{flex-direction:column}.hero-logo{letter-spacing:-3px}.footer-inner{justify-content:center;text-align:center}.phone-frame{width:150px;height:300px}.screenshots{gap:.8rem}.tv-banner-inner{padding:2rem 1.5rem}}
 
 body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");pointer-events:none;z-index:10000}
 </style>
@@ -152,25 +161,30 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 <section class="hero">
 <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="grid-bg"></div>
 <div class="hero-content">
-<div class="hero-badge">Yeni Sürüm v1.0.6</div>
+<div class="hero-badge">Yeni Sürüm v1.0.9</div>
 <div class="app-icon"><span>iHS</span></div>
 <div class="hero-logo"><span class="i">i</span><span class="h">H</span><span class="s">S</span></div>
-<p class="hero-desc">Canlı TV, Film ve Dizi deneyimini yeniden tanımlayan premium IPTV oynatıcı. Tek uygulama, sınırsız içerik.</p>
+<p class="hero-desc">Canlı TV, Film ve Dizi deneyimini yeniden tanımlayan premium IPTV oynatıcı. Telefon, tablet ve Android TV — tek uygulama, sınırsız içerik.</p>
 <div class="hero-actions">
 <a href="https://play.google.com/store/apps/details?id=com.ihsplayer" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12l-7-7v4H3v6h11v4l7-7z"/></svg>Google Play'den İndir</a>
 <a href="https://t.me/ihsplayertr" class="btn btn-ghost"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.07-.2c-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.55 3.67-.52.36-1 .54-1.42.53-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.37-.49 1.02-.74 3.98-1.73 6.64-2.87 7.97-3.43 3.8-1.58 4.59-1.86 5.1-1.87.11 0 .37.03.54.17.14.12.18.28.2.46 0 .06.01.24 0 .38z"/></svg>Telegram</a>
 </div>
 <div class="play-badge"><a href="https://play.google.com/store/apps/details?id=com.ihsplayer"><img alt="Google Play'den İndir" src="https://play.google.com/intl/en_us/badges/static/images/badges/tr_badge_web_generic.png" height="50"></a></div>
+<div class="hero-platforms">
+<span class="hero-platform"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>Telefon</span>
+<span class="hero-platform"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 4H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H3V6h18v12z"/></svg>Android TV</span>
+<span class="hero-platform"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h12v16z"/></svg>Tablet</span>
+</div>
 </div>
 <div class="scroll-hint"><div class="scroll-line"></div>keşfet</div>
 </section>
 
 <div class="stats-bar">
-<div class="stat"><div class="stat-value">∞</div><div class="stat-label">Kanal</div></div>
-<div class="stat"><div class="stat-value">24h</div><div class="stat-label">Replay</div></div>
-<div class="stat"><div class="stat-value">EPG</div><div class="stat-label">Rehber</div></div>
-<div class="stat"><div class="stat-value">4K</div><div class="stat-label">Ultra HD</div></div>
-<div class="stat"><div class="stat-value">AES</div><div class="stat-label">Şifreleme</div></div>
+<div class="stat"><div class="stat-value">2</div><div class="stat-label">Oynatıcı Motoru</div></div>
+<div class="stat"><div class="stat-value">EPG</div><div class="stat-label">Program Rehberi</div></div>
+<div class="stat"><div class="stat-value">TMDB</div><div class="stat-label">Afiş & Puan</div></div>
+<div class="stat"><div class="stat-value">TV</div><div class="stat-label">Android TV</div></div>
+<div class="stat"><div class="stat-value">☁️</div><div class="stat-label">Bulut Yedek</div></div>
 </div>
 
 <section class="section" id="features">
@@ -178,19 +192,33 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 <h2 class="section-title">Her şey düşünüldü.</h2>
 <p class="section-desc">Profesyonel IPTV deneyimi için ihtiyacınız olan tüm özellikler.</p>
 <div class="features">
-<div class="feature"><div class="feature-num">01</div><div class="feature-icon">📺</div><h3>Canlı TV</h3><p>Binlerce canlı kanalı kategorize edilmiş arayüzle izleyin. Arama, favori ve hızlı geçiş.</p></div>
-<div class="feature"><div class="feature-num">02</div><div class="feature-icon">🎬</div><h3>Film & Dizi</h3><p>VOD kütüphanesi ile filmleri ve dizileri Netflix tarzı arayüzle keşfedin.</p></div>
-<div class="feature"><div class="feature-num">03</div><div class="feature-icon">📅</div><h3>EPG Rehberi</h3><p>Elektronik program rehberi ile tüm kanalların yayın akışını takip edin.</p></div>
-<div class="feature"><div class="feature-num">04</div><div class="feature-icon">⟲</div><h3>24 Saat Replay</h3><p>Kaçırdığınız programları 24 saat geriye sararak izleyin.</p></div>
-<div class="feature"><div class="feature-num">05</div><div class="feature-icon">☁️</div><h3>Bulut Senkron</h3><p>Ayarlarınız ve favorileriniz bulutta saklanır. Cihaz değişse bile hazır.</p></div>
-<div class="feature"><div class="feature-num">06</div><div class="feature-icon">🛡️</div><h3>Güvenlik</h3><p>AES-256-GCM askeri düzey şifreleme ile verileriniz korunur.</p></div>
+<div class="feature"><div class="feature-num">01</div><div class="feature-icon">📺</div><h3>Canlı TV</h3><p>Kanalları kategorilere ayrılmış arayüzle izleyin. Arama, favoriler, kanal numaraları ve hızlı geçiş.</p></div>
+<div class="feature"><div class="feature-num">02</div><div class="feature-icon">🎬</div><h3>Film & Dizi</h3><p>TMDB afiş ve puanlarıyla zengin VOD kütüphanesi. Trend içerikler, son eklenenler ve kişisel listeler.</p></div>
+<div class="feature"><div class="feature-num">03</div><div class="feature-icon">▶️</div><h3>Kaldığın Yerden Devam</h3><p>İzlemeye ara verdiğin film ve dizilere tam kaldığın yerden devam et. Devam eden bölümler ana ekranda.</p></div>
+<div class="feature"><div class="feature-num">04</div><div class="feature-icon">📅</div><h3>EPG Rehberi</h3><p>Program rehberi ile yayın akışını takip edin. Saat düzeltme, otomatik güncelleme ve geçmiş gün ayarı.</p></div>
+<div class="feature"><div class="feature-num">05</div><div class="feature-icon">📱</div><h3>Android TV</h3><p>Kumanda ile tam kontrol. Televizyonunuz için özel tasarlanmış arayüz, hızlı gezinme ve TV oynatıcısı.</p></div>
+<div class="feature"><div class="feature-num">06</div><div class="feature-icon">⚡</div><h3>Hızlı Yükleme</h3><p>Canlı, film ve dizi paralel indirilir. Akıllı önbellek ile sonraki açılışlar anında. Ayarlanabilir cache.</p></div>
+<div class="feature"><div class="feature-num">07</div><div class="feature-icon">🔊</div><h3>Çift Motor Oynatıcı</h3><p>ExoPlayer ve VLC motoru. Dolby Atmos/DTS ses codec adları, çoklu ses ve altyazı, harici oynatıcı desteği.</p></div>
+<div class="feature"><div class="feature-num">08</div><div class="feature-icon">📲</div><h3>QR ile Kolay Ekleme</h3><p>TV'de uzun uzun yazı yazmayın. Telefonunuzla QR kodu okutup IPTV bilgilerinizi saniyeler içinde ekleyin.</p></div>
+<div class="feature"><div class="feature-num">09</div><div class="feature-icon">☁️</div><h3>Bulut Senkron & Yedek</h3><p>Ayarlarınız ve favorileriniz Firebase ile buluta yedeklenir. Cihaz değişse bile listeleriniz sizinle.</p></div>
 </div>
 </section>
+
+<div class="tv-banner">
+<div class="tv-banner-inner">
+<div class="tv-icon">📺</div>
+<div class="tv-banner-text">
+<h3>Android TV için hazır</h3>
+<p>İHS Player televizyonunuzda da mükemmel çalışır. Kumanda ile kolay gezinme, büyük ekran için optimize arayüz, hızlı kanal geçişi ve TV'ye özel oynatıcı deneyimi.</p>
+<span class="tv-tag">KUMANDA UYUMLU · LEANBACK</span>
+</div>
+</div>
+</div>
 
 <section class="section" id="screenshots">
 <div class="section-label">Uygulama</div>
 <h2 class="section-title">Bir göz atın.</h2>
-<p class="section-desc">Modern ve kullanıcı dostu arayüz.</p>
+<p class="section-desc">Modern ve kullanıcı dostu arayüz. Telefon ve TV için optimize.</p>
 <div class="screenshots">
 <div>
 <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen"><div class="ps-title">Canlı TV</div><div class="ps-card"></div><div class="ps-row"><div></div><div></div><div></div></div><div class="ps-row"><div></div><div></div><div></div></div><div class="ps-card"></div></div></div>
@@ -227,7 +255,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 <h2 class="section-title">Her formatla uyumlu.</h2>
 <p class="section-desc">Hangi IPTV sağlayıcısını kullanırsanız kullanın.</p>
 <div class="tech-list">
-<span class="tech-chip">Xtream Codes</span><span class="tech-chip">M3U / M3U8</span><span class="tech-chip">HLS</span><span class="tech-chip">MPEG-DASH</span><span class="tech-chip">ExoPlayer</span><span class="tech-chip">VLC Engine</span><span class="tech-chip">Dosya İçe Aktar</span><span class="tech-chip">Multi-Playlist</span>
+<span class="tech-chip">Xtream Codes</span><span class="tech-chip">M3U / M3U8</span><span class="tech-chip">Dosyadan İçe Aktar</span><span class="tech-chip">QR ile Ekle</span><span class="tech-chip">ExoPlayer</span><span class="tech-chip">VLC Motoru</span><span class="tech-chip">Harici Oynatıcı</span><span class="tech-chip">Çoklu Liste</span><span class="tech-chip">TMDB</span><span class="tech-chip">XMLTV EPG</span>
 </div>
 </section>
 
@@ -236,12 +264,15 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 <h2 class="section-title">Sıkça Sorulan Sorular</h2>
 <p class="section-desc">Merak ettikleriniz.</p>
 <div class="faq-list">
-<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">İHS Player ücretsiz mi?</div><div class="faq-a">Evet, İHS Player tamamen ücretsiz olarak Google Play'den indirilebilir. Uygulama içi reklam destekli bir modeldir.</div></div>
-<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">IPTV aboneliği sağlıyor musunuz?</div><div class="faq-a">Hayır, İHS Player yalnızca bir medya oynatıcıdır. Kendi IPTV hizmet sağlayıcınızdan aldığınız bilgileri girerek kullanabilirsiniz. Herhangi bir içerik sağlamamaktayız.</div></div>
-<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Hangi giriş yöntemlerini destekliyorsunuz?</div><div class="faq-a">Xtream Codes (sunucu URL + kullanıcı adı + şifre), M3U/M3U8 URL ve cihazdan dosya içe aktarma yöntemlerini destekliyoruz.</div></div>
-<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Verilerim güvende mi?</div><div class="faq-a">Evet, tüm kullanıcı verileri AES-256-GCM askeri düzey şifreleme ile korunmaktadır. Bilgileriniz yalnızca cihazınızda saklanır ve üçüncü taraflarla paylaşılmaz.</div></div>
-<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">24 saat replay nasıl çalışır?</div><div class="faq-a">EPG (program rehberi) üzerinden geçmiş programlara tıklayarak son 24 saat içindeki yayınları tekrar izleyebilirsiniz. Bu özellik IPTV sağlayıcınızın desteğine bağlıdır.</div></div>
-<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Hangi cihazlarda çalışır?</div><div class="faq-a">Android 8.0 (API 26) ve üzeri tüm Android cihazlarda çalışır: telefon, tablet ve Android TV box.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">İHS Player ücretsiz mi?</div><div class="faq-a">Evet, İHS Player Google Play'den ücretsiz indirilebilir. Uygulama reklam destekli bir modelle çalışır — içerik geçişlerinde kısa reklamlar gösterilebilir.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">IPTV aboneliği sağlıyor musunuz?</div><div class="faq-a">Hayır, İHS Player yalnızca bir medya oynatıcıdır. Kendi IPTV hizmet sağlayıcınızdan aldığınız bilgileri (Xtream Codes, M3U vb.) girerek kullanabilirsiniz. Herhangi bir içerik, kanal veya abonelik sağlamıyoruz.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Android TV'de çalışır mı?</div><div class="faq-a">Evet! İHS Player Android TV için özel olarak tasarlanmıştır. Kumanda ile tam kontrol, büyük ekran arayüzü, hızlı kanal geçişi ve TV'ye özel oynatıcı deneyimi sunar. Telefon, tablet ve Android TV box'larda çalışır.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Hangi giriş yöntemlerini destekliyorsunuz?</div><div class="faq-a">Xtream Codes (sunucu URL + kullanıcı adı + şifre), M3U/M3U8 URL ve cihazdan dosya içe aktarma yöntemlerini destekliyoruz. Ayrıca TV'de QR kod ile telefonunuzdan kolayca hesap ekleyebilir, birden fazla liste ekleyip aralarında geçiş yapabilirsiniz.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Verilerim güvende mi?</div><div class="faq-a">IPTV giriş bilgileriniz cihazınızda güvenle saklanır ve üçüncü taraflarla paylaşılmaz. İsteğe bağlı olarak Firebase ile ayarlarınızı ve favorilerinizi buluta yedekleyebilirsiniz — böylece cihaz değiştirseniz bile listeleriniz sizinle kalır.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Film ve dizilerde kaldığım yerden devam edebilir miyim?</div><div class="faq-a">Evet. İzlemeye ara verdiğiniz film ve diziler otomatik olarak kaydedilir. Ana ekrandaki "Devam Et" bölümünden tam kaldığınız yerden izlemeye devam edebilirsiniz.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Yükleme neden hızlı?</div><div class="faq-a">İHS Player canlı TV, film ve dizileri paralel olarak indirir ve akıllı önbellek (cache) kullanır. İlk yüklemeden sonra içerik cihazınızda saklanır, sonraki açılışlar anında olur. Cache süresini ayarlardan kendiniz belirleyebilirsiniz.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Hangi ses ve altyazı seçenekleri var?</div><div class="faq-a">Çoklu ses parçası (Dolby Atmos, Dolby Digital+, DTS gibi codec adları görünür) ve altyazı seçimi desteklenir. Altyazı boyutu, rengi ve arka planını özelleştirebilirsiniz. ExoPlayer ve VLC olmak üzere iki oynatıcı motoru mevcuttur.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Hangi cihazlarda çalışır?</div><div class="faq-a">Android 8.0 (API 26) ve üzeri tüm cihazlarda çalışır: telefon, tablet, Android TV ve TV box.</div></div>
 <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sorun yaşıyorum, nasıl destek alabilirim?</div><div class="faq-a">Telegram topluluğumuza (@ihsplayertr) katılabilir veya iptvihs@gmail.com adresine e-posta gönderebilirsiniz.</div></div>
 </div>
 </section>
@@ -251,7 +282,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 <h2>Hemen başlayın.</h2>
 <p>İHS Player'ı indirin, IPTV bilgilerinizi girin ve izlemeye başlayın.</p>
 <a href="https://play.google.com/store/apps/details?id=com.ihsplayer" class="btn btn-primary" style="font-size:1rem;padding:1rem 2.5rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path d="M21 12l-7-7v4H3v6h11v4l7-7z"/></svg>Google Play'den İndir</a>
-<p class="platform-note">Android 8.0+ · Ücretsiz · 15MB</p>
+<p class="platform-note">Android 8.0+ · Telefon · Tablet · Android TV · Ücretsiz (reklam destekli)</p>
 </div>
 </section>
 
