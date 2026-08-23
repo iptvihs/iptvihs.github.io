@@ -1,201 +1,234 @@
 <!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İHS PLAYER - Profesyonel IPTV ve Medya Oynatıcı</title>
-    <meta name="description" content="İHS PLAYER; TV, Mobil ve Tablet için optimize edilmiş, bulut senkronizasyonu, TMDb entegrasyonu ve çoklu profil desteği sunan yeni nesil IPTV oynatıcısıdır.">
-    
-    <!-- Projedeki Orijinal Fontlar (Big Shoulders ve Inter) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Simgeler -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS (Modern ve Hızlı UI) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bgDark: '#000000',
-                        bgCard: '#0a0a0a',
-                        ihsRed: '#E50914',
-                        ihsRedDark: '#b20710',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Big Shoulders Display', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <title>IHS Player - Ana Menü</title>
     <style>
-        body { background-color: #000000; color: #ffffff; }
-        .hero-gradient { background: radial-gradient(circle at top, #1a0204 0%, #000000 70%); }
-        .feature-border { border: 1px solid rgba(255, 255, 255, 0.05); transition: border-color 0.3s ease; }
-        .feature-border:hover { border-color: rgba(229, 9, 20, 0.4); }
-        .text-accent { background: linear-gradient(90deg, #E50914, #ff4b2b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        :root {
+            --bg-color: #0b0e14;
+            --surface-color: #161b26;
+            --primary-color: #0066ff;
+            --text-primary: #ffffff;
+            --text-secondary: #8a93a2;
+            --focus-ring: 4px solid #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden; /* TV ekranlarında sayfa kaydırması istenmez */
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sol Navigasyon Menüsü */
+        nav {
+            width: 280px;
+            background-color: var(--surface-color);
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 0 20px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .brand {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+
+        .nav-item {
+            padding: 22px 40px;
+            font-size: 22px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            outline: none; 
+            border-left: 6px solid transparent;
+        }
+
+        /* Kumanda Odaklanma (Focus) Tasarımı */
+        .nav-item:focus, .nav-item.active {
+            background-color: rgba(0, 102, 255, 0.1);
+            color: var(--text-primary);
+            border-left: 6px solid var(--primary-color);
+            transform: scale(1.05);
+            font-weight: 600;
+        }
+
+        /* Ana İçerik Alanı */
+        main {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .time {
+            font-size: 28px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Grid Yapısı */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            overflow-y: auto;
+            padding-right: 20px;
+            padding-bottom: 50px;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border-radius: 16px;
+            height: 220px;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+            outline: none;
+            border: 4px solid transparent;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Kart Görsel Örnekleri (Karanlık Gradient) */
+        .card:nth-child(1) { background: linear-gradient(to top, rgba(11,14,20,1), transparent), #232b3d; }
+        .card:nth-child(2) { background: linear-gradient(to top, rgba(11,14,20,1), transparent), #2a203b; }
+        .card:nth-child(3) { background: linear-gradient(to top, rgba(11,14,20,1), transparent), #1e2e2d; }
+        .card:nth-child(4) { background: linear-gradient(to top, rgba(11,14,20,1), transparent), #3d2323; }
+        
+        .card:focus {
+            transform: scale(1.08);
+            border: var(--focus-ring);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            z-index: 2;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            text-shadow: 0 4px 6px rgba(0,0,0,0.9);
+        }
+
+        /* Bilgi Metni */
+        .helper {
+            margin-top: auto;
+            color: var(--text-secondary);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-ihsRed selection:text-white">
+<body>
 
-    <!-- Üst Menü (Navbar) -->
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-play text-ihsRed text-xl"></i>
-                    <span class="font-display font-bold text-2xl tracking-wide uppercase">İHS PLAYER</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#ozellikler" class="text-sm text-gray-400 hover:text-white transition">Platform Özellikleri</a>
-                    <a href="#cihazlar" class="text-sm text-gray-400 hover:text-white transition">Desteklenen Cihazlar</a>
-                </div>
-                <div>
-                    <!-- Google Play Orijinal Linki -->
-                    <a href="https://play.google.com/store/apps/details?id=com.ihsplayer" target="_blank" class="bg-ihsRed hover:bg-ihsRedDark text-white px-6 py-2.5 rounded font-medium text-sm transition flex items-center gap-2">
-                        <i class="fa-brands fa-google-play"></i> Google Play
-                    </a>
-                </div>
-            </div>
-        </div>
+    <nav>
+        <div class="brand">IHS PLAYER</div>
+        <a href="#" class="nav-item active" tabindex="1">Canlı Yayınlar</a>
+        <a href="#" class="nav-item" tabindex="2">Filmler (VOD)</a>
+        <a href="#" class="nav-item" tabindex="3">Diziler</a>
+        <a href="#" class="nav-item" tabindex="4">TV Rehberi (EPG)</a>
+        <a href="#" class="nav-item" tabindex="5">Ayarlar</a>
     </nav>
 
-    <!-- Ana Vitrin (Hero Section) -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-gradient border-b border-white/5">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 class="font-display text-5xl md:text-7xl font-black uppercase tracking-tight mb-6 leading-tight">
-                Televizyon Deneyiminizi <br class="hidden md:block" />
-                <span class="text-accent">Yeniden Tanımlayın.</span>
-            </h1>
-            <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
-                Android Smart TV, Telefon ve Tabletler için özel olarak tasarlanmış, Xtream ve M3U destekli en akıcı medya oynatıcı. İçeriklerinizi bulut gücüyle yönetin.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <!-- Google Play Orijinal Linki -->
-                <a href="https://play.google.com/store/apps/details?id=com.ihsplayer" target="_blank" class="bg-ihsRed hover:bg-ihsRedDark text-white px-8 py-3.5 rounded font-semibold text-lg flex items-center gap-3 transition w-full sm:w-auto justify-center">
-                    <i class="fa-brands fa-google-play text-xl"></i> Ücretsiz İndir
-                </a>
-                <a href="#ozellikler" class="bg-transparent border border-white/20 hover:bg-white/5 text-white px-8 py-3.5 rounded font-semibold text-lg transition w-full sm:w-auto text-center">
-                    Daha Fazla Bilgi
-                </a>
+    <main>
+        <header>
+            <h1>Öne Çıkanlar</h1>
+            <div class="time" id="clock">--:--</div>
+        </header>
+
+        <div class="content-grid">
+            <div class="card" tabindex="6">
+                <div class="card-title">Ulusal Kanallar</div>
+            </div>
+            <div class="card" tabindex="7">
+                <div class="card-title">Spor</div>
+            </div>
+            <div class="card" tabindex="8">
+                <div class="card-title">Belgesel</div>
+            </div>
+            <div class="card" tabindex="9">
+                <div class="card-title">Sinema Serisi</div>
             </div>
         </div>
-    </section>
-
-    <!-- Temel Özellikler Izgarası (Bento Layout) -->
-    <section id="ozellikler" class="py-24 bg-bgDark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold uppercase tracking-wide">Güçlü ve Yenilikçi <span class="text-ihsRed">Altyapı</span></h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- TV Optimizasyonu -->
-                <div class="bg-bgCard p-8 rounded-xl feature-border lg:col-span-2">
-                    <i class="fa-solid fa-tv text-3xl text-ihsRed mb-5"></i>
-                    <h3 class="text-xl font-semibold mb-3">Smart TV İçin Özel Tasarım</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        Büyük ekranlar ve uzaktan kumandalar (D-Pad) için kusursuz odak yönetimi. Akıcı kanal geçişleri (Zapping), detaylı OSD panelleri ve Grid EPG sistemi ile kanallar arasında gezinmek hiç bu kadar hızlı olmamıştı.
-                    </p>
-                </div>
-
-                <!-- Bulut Senkronizasyonu -->
-                <div class="bg-bgCard p-8 rounded-xl feature-border">
-                    <i class="fa-solid fa-cloud-arrow-up text-3xl text-white mb-5"></i>
-                    <h3 class="text-xl font-semibold mb-3">Çapraz Cihaz Senkronizasyonu</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        Telefonunuzda oluşturduğunuz oynatma listeleri veya favoriler, bulut altyapısı sayesinde anında televizyonunuza senkronize olur.
-                    </p>
-                </div>
-
-                <!-- Xtream & M3U -->
-                <div class="bg-bgCard p-8 rounded-xl feature-border">
-                    <i class="fa-solid fa-list-ul text-3xl text-white mb-5"></i>
-                    <h3 class="text-xl font-semibold mb-3">Kapsamlı Liste Desteği</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        M3U dosyaları ve Xtream Codes API ile tam uyumluluk. Tüm çalma listelerinizi saniyeler içinde ayrıştırın ve hatasız oynatın.
-                    </p>
-                </div>
-
-                <!-- TMDb Entegrasyonu -->
-                <div class="bg-bgCard p-8 rounded-xl feature-border">
-                    <i class="fa-solid fa-film text-3xl text-white mb-5"></i>
-                    <h3 class="text-xl font-semibold mb-3">Zenginleştirilmiş VOD (TMDb)</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        Film ve dizilerinizin yüksek kaliteli afişleri, oyuncu kadroları, özetleri ve IMDb puanları The Movie Database entegrasyonu ile otomatik çekilir.
-                    </p>
-                </div>
-
-                <!-- Profil ve Ebeveyn -->
-                <div class="bg-bgCard p-8 rounded-xl feature-border">
-                    <i class="fa-solid fa-shield-halved text-3xl text-white mb-5"></i>
-                    <h3 class="text-xl font-semibold mb-3">Profil & Ebeveyn Kontrolü</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        Kişiselleştirilmiş profiller oluşturun. PIN korumalı ebeveyn kilidi ile çocuklarınız için uygun olmayan içerik kategorilerini tamamen gizleyin.
-                    </p>
-                </div>
-            </div>
+        
+        <div class="helper">
+            D-Pad (Yön Tuşları) ile ekranda gezinebilirsiniz.
         </div>
-    </section>
+    </main>
 
-    <!-- Kolay Giriş Vurgusu (Alternating Section) -->
-    <section class="py-20 bg-bgCard border-y border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="w-full md:w-1/2">
-                    <div class="bg-black/50 p-10 rounded-2xl border border-white/5 flex items-center justify-center">
-                        <i class="fa-solid fa-qrcode text-9xl text-ihsRed"></i>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <h2 class="font-display text-4xl font-bold uppercase mb-4">TV'de Şifre Girmeye Son</h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                        Uygulamamızın QR Kod eşleştirme sistemi sayesinde, akıllı televizyonunuzda uzun kullanıcı adları ve şifreler tuşlamak zorunda kalmazsınız. Mobil cihazınızdan kodu okutun ve saniyeler içinde oturum açın.
-                    </p>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-ihsRed"></i> Hızlı ve Güvenli Eşleşme</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-ihsRed"></i> Anında Bulut Bağlantısı</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        // Sağ üst köşedeki dijital saat entegrasyonu
+        function updateTime() {
+            const now = new Date();
+            let hours = now.getHours().toString().padStart(2, '0');
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('clock').innerText = `${hours}:${minutes}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
 
-    <!-- Footer -->
-    <footer class="bg-bgDark py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-play text-ihsRed text-xl"></i>
-                    <span class="font-display font-bold text-2xl tracking-wide uppercase">İHS PLAYER</span>
-                </div>
-                
-                <div class="flex flex-wrap justify-center gap-8 text-sm text-gray-400 font-medium">
-                    <a href="#" class="hover:text-white transition">Gizlilik Politikası</a>
-                    <a href="#" class="hover:text-white transition">Kullanım Şartları</a>
-                    <!-- AdMob için zorunlu app-ads.txt linki -->
-                    <a href="/app-ads.txt" target="_blank" class="text-ihsRed hover:text-white transition">app-ads.txt</a>
-                </div>
-            </div>
-            
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-                <p>&copy; 2026 İHS PLAYER. Tüm hakları saklıdır.</p>
-                <div class="flex items-center gap-2">
-                    <a href="mailto:iptvihs@gmail.com" class="hover:text-white transition"><i class="fa-regular fa-envelope"></i> iptvihs@gmail.com</a>
-                </div>
-            </div>
-            <div class="mt-4 text-xs text-gray-600 text-center md:text-left max-w-3xl">
-                Yasal Uyarı: İHS PLAYER bağımsız bir medya oynatıcı uygulamasıdır. İçerisinde herhangi bir yayın, kanal, film veya dizi barındırmaz. Kullanıcılar, yalnızca yasal olarak sahip oldukları veya erişim hakları bulunan içerikleri oynatmakla yükümlüdür. Telif hakkı ihlallerinden İHS PLAYER sorumlu tutulamaz.
-            </div>
-        </div>
-    </footer>
+        // Kumanda Navigasyonu (Spatial Navigation) Yönetimi
+        document.addEventListener('keydown', function(e) {
+            const current = document.activeElement;
+            const focusables = Array.from(document.querySelectorAll('[tabindex]'));
+            let currentIndex = focusables.indexOf(current);
 
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                let next = focusables[currentIndex + 1];
+                if (next) next.focus();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                let prev = focusables[currentIndex - 1];
+                if (prev) prev.focus();
+            } else if (e.key === 'ArrowRight') {
+                // Menüden Grid içeriğine geçiş
+                if (current.classList.contains('nav-item')) {
+                    e.preventDefault();
+                    document.querySelector('.card').focus();
+                }
+            } else if (e.key === 'ArrowLeft') {
+                // İçerikten tekrar sol menüye dönüş
+                if (current.classList.contains('card')) {
+                    e.preventDefault();
+                    document.querySelector('.nav-item.active').focus();
+                }
+            }
+        });
+
+        // Televizyon uygulaması açıldığında ana menüye odaklan
+        window.onload = () => {
+            document.querySelector('.nav-item').focus();
+        };
+    </script>
 </body>
 </html>
