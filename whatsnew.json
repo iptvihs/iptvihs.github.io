@@ -1,4 +1,10 @@
 {
-  "title": "HOŞGELDİNİZ",
-  "notes": ["Yeni sezon başladı", "Bakım tamamlandı"]
+  "title": "YENİLİKLER",
+  "notes": [
+    "İzlemeye devam et bölümü Listelerim'e taşındı",
+    "Film ve dizi listelerine ekleme ve listeden çıkarma akışı iyileştirildi",
+    "Film ve dizi detaylarında TMDB bilgileri geliştirildi",
+    "TV ve mobil kullanımında gezinme ve kumanda uyumu iyileştirildi",
+    "Genel hata düzeltmeleri ve kararlılık iyileştirmeleri yapıldı"
+  ]
 }
