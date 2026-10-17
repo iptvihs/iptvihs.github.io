@@ -5,8 +5,13 @@
       "date": "",
       "title": "Sürümdeki başlıca özellikler",
       "notes": [
-        "Canlı TV: kanal listesi ve önizleme bir arada, 6 saatlik program rehberi",
-        "Film ve dizi: kategori paneli, devam et / baştan izle ve TMDB bilgileri",
+        "Tema altyapısı ve renk teması geliştirmeleri (temalar ve renk seçenekleri için altyapı hazırlandı)",
+        "Kumanda fokus iyileştirmeleri ve akıcı animasyon geliştirmeleri yapıldı",
+        "Video player altyapısı ve performans geliştirmeleri tamamlandı",
+        "Canlı TV için yeni tasarım, yeni görsel stil ve kanal listesi/önizleme entegrasyonu (6 saatlik program rehberi ile birlikte)",
+        "Film ve dizi kategorilerinde tasarım iyileştirmeleri, kategori paneli, afiş düzeltmeleri, devam et / baştan izle ve TMDB bilgileri",
+        "Ayarlar ekranında tasarım iyileştirmeleri ve 'Listelerim' alanı için kapsamlı geliştirmeler",
+        "Genel tipografi için yazı fontu iyileştirmeleri yapıldı",
         "Birden fazla liste, PIN ile +18 kilidi ve Google ile isteğe bağlı bulut eşitleme",
         "Xtream timeshift ve M3U catch-up desteği (sağlayıcıya bağlıdır)"
       ]
